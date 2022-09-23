@@ -1,4 +1,4 @@
-<img alt="GitHub" src="https://img.shields.io/github/license/Almighty-Satan/MOTDify">
+<img alt="GitHub" src="https://img.shields.io/github/license/Almighty-Satan/MOTDify?style=flat-square">
 
 # MOTDify
 
