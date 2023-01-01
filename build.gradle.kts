@@ -4,8 +4,8 @@ group = "com.github.almightysatan"
 version = "1.0.0"
 
 plugins {
-    kotlin("jvm") version "1.7.10"
-    kotlin("plugin.serialization") version "1.7.10"
+    kotlin("jvm") version "1.8.0"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 val lib: Configuration by configurations.creating {
@@ -18,8 +18,8 @@ repositories {
 
 dependencies {
     lib("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")
-    lib("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    lib("io.ktor:ktor-network:2.1.1")
+    lib("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    lib("io.ktor:ktor-network:2.2.1")
     lib("org.apache.logging.log4j:log4j-core:2.19.0")
     testImplementation(kotlin("test"))
 }
