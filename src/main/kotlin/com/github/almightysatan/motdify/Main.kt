@@ -24,6 +24,7 @@ import com.github.almightysatan.motdify.packets.PacketClientStatus
 import com.github.almightysatan.motdify.packets.PacketServerHandshake
 import com.github.almightysatan.motdify.packets.PacketServerLogin0
 import com.github.almightysatan.motdify.packets.PacketServerLogin759
+import com.github.almightysatan.motdify.packets.PacketServerLogin761
 import com.github.almightysatan.motdify.packets.PacketServerPing
 import com.github.almightysatan.motdify.packets.PacketServerStatus
 import io.ktor.network.selector.*
@@ -37,6 +38,7 @@ import java.io.File
 import java.util.*
 
 const val ONE_NINETEEN_PROTOCOL = 759
+const val ONE_NINETEEN_THREE_PROTOCOL = 761
 val LOGGER: Logger = LogManager.getLogger("com.github.almightysatan.motdify")
 
 private var port: Int = 25565
@@ -138,7 +140,13 @@ suspend fun handleStatus(connection: Connection) {
 suspend fun handleLogin(connection: Connection) {
     connection.state = State.LOGIN
 
-    connection.readPacket(if (connection.protocol >= ONE_NINETEEN_PROTOCOL) PacketServerLogin759() else PacketServerLogin0())
+    val loginPacket = when (connection.protocol) {
+        in 0 until ONE_NINETEEN_PROTOCOL -> PacketServerLogin0()
+        in ONE_NINETEEN_PROTOCOL until ONE_NINETEEN_THREE_PROTOCOL -> PacketServerLogin759()
+        else -> PacketServerLogin761()
+    }
+
+    connection.readPacket(loginPacket)
     connection.sendPacket(PacketClientDisconnect(TextMessage(disconnectMessage)))
     connection.close()
 }
