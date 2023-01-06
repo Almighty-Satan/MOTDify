@@ -63,7 +63,7 @@ fun main() {
         setIfEnvExists("motdify_disconnect", ::disconnectMessage::set)
 
         socket = aSocket(SelectorManager(Dispatchers.IO)).tcp().bind(port = port)
-    }catch (t: Throwable) {
+    } catch (t: Throwable) {
         LOGGER.error("Error while initializing", t)
         return
     }
