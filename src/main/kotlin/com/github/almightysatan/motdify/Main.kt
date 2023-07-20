@@ -95,9 +95,10 @@ fun setIntIfEnvExists(key: String, setter: (Int) -> Unit) {
 fun setFaviconIfEnvExists(key: String, setter: (String?) -> Unit) {
     if (System.getenv().containsKey(key)) {
         val file = File(System.getenv(key))
-        if (file.exists())
+        if (file.exists()) {
+            LOGGER.info("Found favicon ${file.name}")
             setter("data:image/png;base64,${Base64.getEncoder().encodeToString(file.readBytes())}")
-        else
+        } else
             LOGGER.warn("${file.absolutePath} does not exist!")
     }
 }
