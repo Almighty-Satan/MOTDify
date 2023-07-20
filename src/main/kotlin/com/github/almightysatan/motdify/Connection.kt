@@ -37,7 +37,7 @@ class Connection(val socket: Socket) : AutoCloseable {
     var protocol by Delegates.notNull<Int>()
 
     suspend fun <T: ServerboundPacket> readPacket(packet: T): T {
-        val length = inputChannel.readVarInt()
+        inputChannel.readVarInt() // length
         val id = inputChannel.readVarInt()
 
         if (packet.id != id)
