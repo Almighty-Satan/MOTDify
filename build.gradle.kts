@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "com.github.almightysatan"
-version = "1.0.2"
+version = "1.0.3"
 
 plugins {
     kotlin("jvm") version "1.9.0"
