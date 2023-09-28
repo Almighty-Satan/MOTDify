@@ -18,15 +18,7 @@
 
 package com.github.almightysatan.motdify
 
-import com.github.almightysatan.motdify.packets.PacketClientDisconnect
-import com.github.almightysatan.motdify.packets.PacketClientPing
-import com.github.almightysatan.motdify.packets.PacketClientStatus
-import com.github.almightysatan.motdify.packets.PacketServerHandshake
-import com.github.almightysatan.motdify.packets.PacketServerLogin0
-import com.github.almightysatan.motdify.packets.PacketServerLogin759
-import com.github.almightysatan.motdify.packets.PacketServerLogin761
-import com.github.almightysatan.motdify.packets.PacketServerPing
-import com.github.almightysatan.motdify.packets.PacketServerStatus
+import com.github.almightysatan.motdify.packets.*
 import io.ktor.network.selector.*
 import io.ktor.network.sockets.*
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +31,7 @@ import java.util.*
 
 const val ONE_NINETEEN_PROTOCOL = 759
 const val ONE_NINETEEN_THREE_PROTOCOL = 761
+const val ONE_TWENTY_TWO_PROTOCOL = 764
 val LOGGER: Logger = LogManager.getLogger("com.github.almightysatan.motdify")
 
 private var port: Int = 25565
@@ -144,7 +137,8 @@ suspend fun handleLogin(connection: Connection) {
     val loginPacket = when (connection.protocol) {
         in 0 until ONE_NINETEEN_PROTOCOL -> PacketServerLogin0()
         in ONE_NINETEEN_PROTOCOL until ONE_NINETEEN_THREE_PROTOCOL -> PacketServerLogin759()
-        else -> PacketServerLogin761()
+        in ONE_NINETEEN_THREE_PROTOCOL until ONE_TWENTY_TWO_PROTOCOL -> PacketServerLogin761()
+        else -> PacketServerLogin764()
     }
 
     connection.readPacket(loginPacket)
