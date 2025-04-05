@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - run: ./gradlew build
+      - run: ./gradlew clean build
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
