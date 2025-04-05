@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 group = "com.github.almightysatan"
-version = "1.0.4"
+version = "1.1.0"
 
 plugins {
     kotlin("jvm") version "2.1.20"
