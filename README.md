@@ -7,8 +7,8 @@ Players can't join this server and are instantly disconnected with a configurabl
 
 Supported Minecraft versions: 1.7.x+
 
-<img src="https://github.com/Almighty-Satan/MOTDify/blob/master/images/image0.png">
-<img src="https://github.com/Almighty-Satan/MOTDify/blob/master/images/image1.png">
+![image0](./images/image0.png)
+![image1](./images/image1.png)
 
 ## Configuration
 MOTDify can be configured using the following environment variables
@@ -21,8 +21,8 @@ MOTDify can be configured using the following environment variables
 |`motdify_players_online`|The number of player currently online|`0`|
 |`motdify_players_max`|The maximum number of concurrent players|`69`|
 |`motdify_favicon`|Path to a png image that is displayed as the servers favicon. The size of the image has to be exactly 64x64 pixels|N/A|
-|`motdify_motd`|The MOTD|
-|`motdify_disconnect`|A message that is displayed to the player when trying to join this server|
+|`motdify_motd`|The MOTD|`§cServer not available!`|
+|`motdify_disconnect`|A message that is displayed to the player when trying to join this server|`§cServer not available!`|
 
 ## Running
 It is recommended to use the [Docker image](https://hub.docker.com/r/almightysatan/motdify) but you can also compile the project

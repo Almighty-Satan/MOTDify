@@ -38,9 +38,9 @@ private var port: Int = 25565
 private var protocolVersion: Int? = null
 private var softwareName = "MOTDify"
 private var onlinePlayers: Int = 0
-private var maxPlayers: Int = 69
+private var maxPlayers: Int = 100
 private var favicon: String? = null
-private var motd: String = "§7Your favorite p2w server!"
+private var motd: String = "§cServer not available!"
 private var disconnectMessage: String = "§cServer not available!"
 
 fun main() {
