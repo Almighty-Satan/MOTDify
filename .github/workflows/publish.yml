@@ -24,6 +24,6 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
-          push: 'false'
+          push: 'true'
           tags: 'almightysatan/motdify:latest,almightysatan/motdify:1.1.0'
           context: .
