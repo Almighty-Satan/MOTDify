@@ -54,16 +54,21 @@ fun main() {
         setFaviconIfEnvExists("motdify_favicon", ::favicon::set)
         setIfEnvExists("motdify_motd") { motd = it.replace("\\n", "\n") }
         setIfEnvExists("motdify_disconnect", ::disconnectMessage::set)
-
-        socket = aSocket(SelectorManager(Dispatchers.IO)).tcp().bind(port = port)
     } catch (t: Throwable) {
-        LOGGER.error("Error while initializing", t)
+        LOGGER.error("Error while reading environment variables", t)
         return
     }
 
-    LOGGER.info("Listening on port $port")
-
     runBlocking {
+        try {
+            socket = aSocket(SelectorManager(Dispatchers.IO)).tcp().bind(port = port)
+        } catch (t: Throwable) {
+            LOGGER.error("Error while initializing", t)
+            return@runBlocking
+        }
+
+        LOGGER.info("Listening on port $port")
+
         while (true) {
             try {
                 val client = socket.accept()

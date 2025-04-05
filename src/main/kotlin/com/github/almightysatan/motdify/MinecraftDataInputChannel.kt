@@ -32,7 +32,7 @@ class MinecraftDataInputChannel(private val channel: ByteReadChannel) {
     }
 
     suspend fun readBoolean() : Boolean {
-        return this.channel.readBoolean()
+        return this.channel.readByte() != 0.toByte()
     }
 
     suspend fun readVarInt() : Int {

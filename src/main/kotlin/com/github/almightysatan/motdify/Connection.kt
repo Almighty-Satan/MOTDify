@@ -54,7 +54,7 @@ class Connection(val socket: Socket) : AutoCloseable {
 
         val bytes = byteArrayOutputStream.toByteArray()
         VarInt.writeVarInt(outputChannel::writeByte, bytes.size)
-        outputChannel.writeAvailable(bytes)
+        outputChannel.writeByteArray(bytes)
         outputChannel.flush()
         byteArrayOutputStream.reset()
     }
